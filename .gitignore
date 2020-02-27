@@ -1,0 +1,7 @@
+.vscode/launch.json
+.vscode/tasks.json
+StudyApi/obj/Debug/netcoreapp3.0/project.razor.json
+StudyApi/obj/Debug/netcoreapp3.0/StudyApi.AssemblyInfo.cs
+StudyApi/obj/Debug/netcoreapp3.0/StudyApi.AssemblyInfoInputs.cache
+StudyApi/obj/Debug/netcoreapp3.0/StudyApi.assets.cache
+StudyApi/obj/Debug/netcoreapp3.0/StudyApi.csprojAssemblyReference.cache
