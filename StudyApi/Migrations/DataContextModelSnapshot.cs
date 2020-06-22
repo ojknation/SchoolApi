@@ -55,8 +55,8 @@ namespace StudyApi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DepartmentName")
-                        .HasColumnType("int");
+                    b.Property<string>("DepartmentName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SchoolID")
                         .HasColumnType("int");
@@ -81,6 +81,36 @@ namespace StudyApi.Migrations
                     b.HasKey("SchoolID");
 
                     b.ToTable("Schools");
+                });
+
+            modelBuilder.Entity("StudyApi.Models.User", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Department")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("StudyApi.Models.Course", b =>

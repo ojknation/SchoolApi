@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using StudyApi.Data;
+using StudyApi.Models;
 
 namespace StudyApi.Controllers
 {
@@ -11,29 +13,32 @@ namespace StudyApi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private DataContext _context;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(DataContext dataContext) 
         {
-            _logger = logger;
+             _context = dataContext;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<School> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            School school = new School();
+            school.SchoolName = "SCOM";
+
+            // Department dept = new Department();
+            // dept.DepartmentName = "IFT";
+            // dept.SchoolID = school.SchoolID;
+
+            // _context.Departments.Add(dept);
+            // _context.SaveChanges();
+            
+
+
+            _context.Schools.Add(school);
+            _context.SaveChanges();
+
+            return _context.Schools.ToList(); 
         }
     }
 }

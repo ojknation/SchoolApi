@@ -4,9 +4,12 @@ namespace StudyApi.Models
 {
     public class School
     {
+         public School() {
+            Departments = new HashSet<Department>();
+        }
         public int SchoolID { get; set; }
         public string SchoolName { get; set; }
 
-        public ICollection<Department> Departments { get; set; }
+        public virtual ICollection<Department> Departments { get; set; }
     }
 }
